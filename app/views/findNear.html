@@ -1,0 +1,21 @@
+<ng-include src="'views/header.html'"></ng-include>
+
+<div class="row">
+	<div class="col-md-12" >
+		<select class="form-control" ng-model="distance" ng-change="around()" ng-options="d.val as d.name for d in dist">
+		</select>
+	</div>
+</div>
+
+
+<google-map id="gmap" zoom="map.zoom" center="map.center" options="map.options" draggable="true">
+	<marker coords="marker.coords" options="marker.options"></marker>
+
+	<marker ng-repeat="station in stations" coords="station.geometry.coordinates" click="goTo(station.recordid)"></marker>
+
+	<circle ng-repeat="c in circle" center='marker.coords' radius='c.radius' fill="c.fill" stroke='c.stroke' clickable='false'></circle>
+</google-map>
+
+<stations-display stations="stations"></stations-display>
+
+<ng-include src="'views/footer.html'"></ng-include>

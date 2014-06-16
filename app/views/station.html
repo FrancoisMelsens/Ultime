@@ -1,0 +1,33 @@
+
+<ng-include src="'views/header.html'"></ng-include>
+
+<br/>
+
+<div class="row">
+	<div class="col-sm-6 col-xs-12">
+		<div>
+			<i class="fa fa-bullseye" data-toggle="tooltip" data-placement="top" title="Station">&emsp;</i>
+			<strong>Station :</br>
+			&emsp;&emsp;&emsp;{{station.fields.nom_station}}</strong><br/></br>
+			<i class="fa fa-tag" data-toggle="tooltip" data-placement="top" title="Type de station">&emsp;</i>
+			Type de station :</br>
+			&emsp;&emsp;&emsp;{{station.fields.reseau}}<br/>			
+			<i class="fa fa-map-marker" data-toggle="tooltip" data-placement="top" title="Arrondissement">&emsp;</i>Arrondissement :</br>
+			&emsp;&emsp;&emsp;{{station.fields.arrondissement}}<br/>
+		</div>
+
+	</div>
+	<div class="col-sm-6 col-xs-12">
+		<google-map zoom="map.zoom" center="map.center" options="map.options" draggable="true">
+			<marker coords="map.coords"></marker>
+		</google-map>
+	</div>
+</div>
+
+<ng-include src="'views/footer.html'"></ng-include>
+
+<script type="text/javascript">
+    $(function () { 
+        $("[data-toggle='tooltip']").tooltip(); 
+    });
+</script>

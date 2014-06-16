@@ -1,0 +1,24 @@
+<ng-include src="'views/header.html'"></ng-include>
+
+<div class="f-filter">
+  <section id="form">
+    <form>
+      <div class="input-group form-search">
+        <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+        <input class="form-control" ng-model="search" placeholder="Nom de station">
+      </div>
+    </form>
+  </section>
+</div>
+
+<div class="map">
+  <google-map zoom="map.zoom" center="map.center" options="map.options">
+    <marker 
+      ng-repeat="station in stations | filter:search"
+      coords="station.geometry.coordinates"
+      click="goTo(station.recordid)">
+    </marker>
+  </google-map>
+</div>
+
+<ng-include src="'views/footer.html'"></ng-include>
